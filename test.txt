@@ -1,0 +1,110 @@
+chmod +x filename.sh
+./filename.sh
+
+-----Calculator-----
+
+#!/bin/bash
+
+# Function to perform addition
+addition() {
+  result=$(echo "$1 + $2" | bc)
+  echo "Result of addition: $result"
+}
+
+# Function to perform subtraction
+subtraction() {
+  result=$(echo "$1 - $2" | bc)
+  echo "Result of subtraction: $result"
+}
+
+# Function to perform multiplication
+multiplication() {
+  result=$(echo "$1 * $2" | bc)
+  echo "Result of multiplication: $result"
+}
+
+# Function to perform division
+division() {
+  if [ $2 -eq 0 ]; then
+    echo "Error: Division by zero!"
+  else
+    result=$(echo "scale=2; $1 / $2" | bc)
+    echo "Result of division: $result"
+  fi
+}
+
+# Function to perform modulus
+modulus() {
+  result=$(echo "$1 % $2" | bc)
+  echo "Result of modulus: $result"
+}
+
+# Main script starts here
+
+# Read first number from user
+read -p "Enter the first number: " num1
+
+# Read last two digits of registration number for second number
+read -p "Enter the last two digits of your registration number: " reg_num
+num2=$reg_num
+
+# Display function options
+echo "Choose operation:"
+echo "a. Addition"
+echo "b. Subtraction"
+echo "c. Multiplication"
+echo "d. Division"
+echo "e. Modulus"
+read -p "Enter your choice (a-e): " choice
+
+# Perform operation based on user choice
+case $choice in
+  a) addition $num1 $num2 ;;
+  b) subtraction $num1 $num2 ;;
+  c) multiplication $num1 $num2 ;;
+  d) division $num1 $num2 ;;
+  e) modulus $num1 $num2 ;;
+  *) echo "Invalid choice" ;;
+esac
+
+-----------------------------------------------------------------------------------------------------------------
+
+-----Fibonacci sequence-----
+
+#!/bin/bash
+
+# Function to count numbers recursively until 10
+recursiveFunction() {
+  local count=$1
+  if [ $count -le 10 ]; then
+    echo "$count"
+    recursiveFunction $((count + 1))
+  fi
+}
+
+# Function to generate the Fibonacci sequence recursively
+fibonacci() {
+  local n=$1
+  if [ $n -eq 0 ]; then
+    echo "0"
+  elif [ $n -eq 1 ]; then
+    echo "0 1"
+  else
+    fib=$(fibonacci $((n - 1)))
+    prev=$(echo $fib | awk '{print $NF}')
+    prev2=$(echo $fib | awk '{print $(NF-1)}')
+    echo "$fib $((prev + prev2))"
+  fi
+}
+
+# Main script starts here
+
+echo "Counting numbers until 10:"
+recursiveFunction 1
+
+echo "Fibonacci sequence of 10 numbers:"
+fibonacci 10
+
+
+------------------------------------------------------------------------------------------------------------------
+
