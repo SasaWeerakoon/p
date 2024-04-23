@@ -108,3 +108,165 @@ fibonacci 10
 
 ------------------------------------------------------------------------------------------------------------------
 
+#!/bin/bash
+
+# Navigate to Desktop directory
+cd ~/Desktop || exit
+
+# Create a subdirectory called Day3
+mkdir -p Day3
+
+# Navigate to Day3 directory
+cd Day3 || exit
+
+# Create Exercise1.sh file
+touch Exercise1.sh
+
+# Open Exercise1.sh in Sublime Text
+sublime-text Exercise1.sh
+
+# Write the script
+echo '#!/bin/bash' > Exercise1.sh
+echo 'echo "Hello, World!"' >> Exercise1.sh
+
+# Save and close the file
+
+-------------------------------------------------------------------------------------------------------------
+
+#!/bin/bash
+
+# Exercise 02.1
+# System Variables
+echo "Welcome $LOGNAME"
+echo "You are working on $SHELL shell"
+echo "You are currently working on $(pwd) directory"
+echo "You are using $(uname) operating system"
+echo "Bye!"
+
+# Exercise 02.2
+# User Defined Variables
+Course="Platform Technology"
+echo "Course: $Course"
+
+-------------------------------------------------------------------------------------------------------
+
+#!/bin/bash
+
+# Exercise 03
+# Array Variables
+Days=("Monday" "Tuesday" "Wednesday" "Thursday")
+echo "First day: ${Days[0]}"
+echo "Second day: ${Days[1]}"
+echo "All days: ${Days[*]}"
+Days+=("Friday")
+echo "Last day: ${Days[-1]}"
+Days[1]="Sunday"
+
+-------------------------------------------------------------------------------------------------
+
+#!/bin/bash
+
+# 1. Using 'let' expression
+
+# a. Initialize x=5+6
+let x=5+6
+
+# b. Print the value of x
+echo "Initial value of x: $x"
+
+# c. Increment the value of x by 1 and print its value
+let "x=x+1"
+echo "Value of x after increment: $x"
+
+# d. Print the value of x
+echo "Value of x: $x"
+
+# e. Initialize a=14, b=8 and print the value of y=a-b
+a=14
+b=8
+let y=$a-$b
+echo "Value of y: $y"
+
+# f. Decrement the value of y by 2 and print its value
+let "y-=2"
+echo "Value of y after decrement: $y"
+
+# g. Find the product of 4*5 and print its value
+let z=4*5
+echo "Product of 4*5: $z"
+
+# 2. Using double parentheses
+
+# a) Addition
+echo "Addition: $((5 + 6))"
+
+# b) Subtraction
+echo "Subtraction: $((14 - 8))"
+
+# c) Multiplication
+echo "Multiplication: $((4 * 5))"
+
+# d) Division
+echo "Division: $((14 / 2))"
+
+# e) Modular
+echo "Modular: $((14 % 8))"
+
+# 3. Using 'expr' expression
+
+# a) Define variables a, b, and c
+a=2
+b=5
+c=9
+
+# b) Print the three variables
+echo "a: $a, b: $b, c: $c"
+
+# c) Print “c % b equals to <<value of c MOD b >>”
+echo "c % b equals to $(expr $c % $b)"
+
+# d) Compute ‘c minus b’ and save it to another variable ‘P’. Print ‘P’
+P=$(expr $c - $b)
+echo "c minus b equals to $P"
+
+# e) Print a * c
+echo "a * c equals to $(expr $a \* $c)"
+
+# f) Finally, print “c/b equals to << value of c/b >>”
+echo "c/b equals to $(expr $c / $b)"
+
+# 4. Length of variables
+
+# a) Declare variable a and print its length
+a="Hello World"
+echo "Length of a: ${#a}"
+
+# b) Declare variable b and print its length
+b='1234'
+echo "Length of b: ${#b}"
+
+------------------------------------------------------------------------------------------------
+
+#!/bin/bash
+
+# a) Ask for user's name and print message
+read -p "Enter your name: " name
+echo "It's nice to meet you $name."
+
+# b) Ask for login details and print message
+read -p "Enter your username: " username
+read -sp "Enter your password: " password
+echo -e "\nThank you $username, you have now entered your login details."
+
+# c) Prompt for user information and print message
+echo "What is your first name?"
+read firstname
+echo "What is your degree program?"
+read degree
+echo "Please enter your Registration Number:"
+read regnum
+echo "Please enter a User name:"
+read username
+read -sp "Please enter a password: " password
+echo -e "\nHello $firstname. Your Registration number is $regnum. You are reading $degree degree program and your user name is $username."
+
